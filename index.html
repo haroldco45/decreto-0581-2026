@@ -10,13 +10,15 @@
 <!-- Open Graph / Redes sociales -->
 <meta property="og:title" content="Decreto 0581 de 2026 — Tercerización e Intermediación Laboral Ilegal"/>
 <meta property="og:description" content="Presunción de contrato de trabajo, límites a las temporales (EST), multas hasta 5.000 SMLMV. Conozca sus derechos y evalúe su riesgo con el Test de Tercerización. Biblioteca Legal Colombiana."/>
-<meta property="og:image" content="https://haroldco45.github.io/biblioteca-legal/decreto-0581-2026/og-image.png"/>
-<meta property="og:url" content="https://haroldco45.github.io/biblioteca-legal/decreto-0581-2026/"/>
+<meta property="og:image" content="https://haroldco45.github.io/decreto-0581-2026/og-image.png"/>
+<meta property="og:url" content="https://haroldco45.github.io/decreto-0581-2026/"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Biblioteca Legal Colombiana"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Decreto 0581 de 2026 — Tercerización Laboral Ilegal"/>
-<meta name="twitter:image" content="https://haroldco45.github.io/biblioteca-legal/decreto-0581-2026/og-image.png"/>
+<meta name="twitter:image" content="https://haroldco45.github.io/decreto-0581-2026/og-image.png"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -241,6 +243,50 @@ td:first-child{color:var(--marfil)}
 .alerta-dorada{background:rgba(201,162,39,.08);border-color:var(--dorado)}
 .alerta-verde{background:rgba(90,168,118,.1);border-color:var(--verde-ok)}
 
+/* ===== Chat IA ===== */
+.chat-ia{
+  background:linear-gradient(160deg,#13253d,#0f1f36);
+  border:1px solid var(--dorado);border-radius:var(--radius);
+  padding:20px;margin:20px 0;
+}
+.chat-mensajes{
+  max-height:420px;min-height:120px;overflow-y:auto;
+  padding:6px 4px;margin-bottom:14px;
+}
+.msg{margin:10px 0;display:flex}
+.msg .burbuja{
+  max-width:85%;padding:12px 16px;border-radius:14px;font-size:.94rem;line-height:1.55;
+  white-space:pre-wrap;word-wrap:break-word;
+}
+.msg-user{justify-content:flex-end}
+.msg-user .burbuja{background:var(--dorado);color:#1a1509;border-bottom-right-radius:4px}
+.msg-ia .burbuja{background:var(--azul-panel);border:1px solid var(--azul-borde);color:var(--marfil);border-bottom-left-radius:4px}
+.msg-ia.error .burbuja{border-color:var(--rojo-alerta);color:#f0a291}
+.escribiendo .burbuja::after{content:'▋';animation:parpadeo 1s infinite;color:var(--dorado-claro)}
+@keyframes parpadeo{50%{opacity:0}}
+.chat-entrada{display:flex;gap:10px}
+.chat-entrada textarea{
+  flex:1;resize:none;background:var(--azul-noche);color:var(--marfil);
+  border:1px solid var(--azul-borde);border-radius:12px;
+  font-family:'Source Serif 4',serif;font-size:.95rem;
+  padding:12px 14px;min-height:48px;max-height:120px;
+}
+.chat-entrada textarea:focus{border-color:var(--dorado);outline:none}
+.chat-entrada button{
+  font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:600;
+  background:var(--dorado);color:#1a1509;border:none;border-radius:12px;
+  padding:0 22px;cursor:pointer;
+}
+.chat-entrada button:hover{background:var(--dorado-claro)}
+.chat-entrada button:disabled{opacity:.5;cursor:wait}
+.sugeridas{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+.sugeridas button{
+  font-family:'Source Serif 4',serif;font-size:.82rem;
+  background:transparent;border:1px solid var(--azul-borde);color:var(--marfil-suave);
+  border-radius:999px;padding:8px 14px;cursor:pointer;text-align:left;
+}
+.sugeridas button:hover{border-color:var(--dorado);color:var(--dorado-claro)}
+
 /* ===== Compartir ===== */
 .compartir{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
 .compartir button,.compartir a{
@@ -261,7 +307,7 @@ footer p{font-size:.85rem;color:var(--marfil-suave);margin:6px 0}
   letter-spacing:.08em;color:var(--dorado);opacity:.85;
 }
 @media print{
-  nav,.compartir,.test,.reiniciar{display:none}
+  nav,.compartir,.test,.reiniciar,.chat-ia{display:none}
   body{background:#fff;color:#111}
   header{background:#fff;border-bottom:2px solid #333}
   h1,h2,h3{color:#111}
@@ -288,6 +334,7 @@ footer p{font-size:.85rem;color:var(--marfil-suave);margin:6px 0}
     <li><a href="#derechos">Sus derechos</a></li>
     <li><a href="#glosario">Glosario</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#consultas-ia">Consultas IA</a></li>
   </ul>
 </nav>
 
@@ -534,6 +581,30 @@ footer p{font-size:.85rem;color:var(--marfil-suave);margin:6px 0}
   </div>
 </section>
 
+<!-- ============ CONSULTAS IA ============ -->
+<section id="consultas-ia">
+  <div class="eyebrow">Asistente especializado</div>
+  <h2>Consultas IA sobre el Decreto 0581</h2>
+  <p class="suave">Pregúntele a la asistente de la Biblioteca Legal sobre este decreto y el marco laboral colombiano. Respuestas educativas — no constituyen asesoría legal.</p>
+
+  <div class="chat-ia">
+    <div class="chat-mensajes" id="chatMensajes" aria-live="polite">
+      <div class="msg msg-ia"><div class="burbuja">👩‍⚖️ Hola, soy la asistente de la Biblioteca Legal Colombiana. Puedo resolver sus dudas sobre el Decreto 0581 de 2026 y la tercerización laboral. ¿En qué le ayudo?</div></div>
+    </div>
+    <div class="sugeridas" id="sugeridas">
+      <button type="button">¿Mi empresa puede seguir usando temporales?</button>
+      <button type="button">Llevo 2 años por una EST en el mismo puesto, ¿qué hago?</button>
+      <button type="button">¿Qué es la presunción de laboralidad?</button>
+      <button type="button">¿Cómo presento una queja ante el Ministerio del Trabajo?</button>
+    </div>
+    <div class="chat-entrada">
+      <textarea id="chatInput" rows="1" placeholder="Escriba su pregunta..." aria-label="Escriba su pregunta para la asistente"></textarea>
+      <button type="button" id="chatEnviar" onclick="enviarIA()">Enviar</button>
+    </div>
+    <p class="nota-privacidad">🔒 Su conversación no se guarda en ningún servidor de la Biblioteca. Solo se envía la pregunta para generar la respuesta (Ley 1581 de 2012 — Habeas Data). No incluya datos personales sensibles.</p>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -625,6 +696,65 @@ function copiarEnlace(btn){
   });
 }
 
+/* ===== Consultas IA (vía proxy seguro del servidor — nunca key en el navegador) ===== */
+const IA_URL='https://sqlad.tailf1cefb.ts.net/api/ia/legal';
+const historialIA=[];
+let iaOcupada=false;
+
+document.querySelectorAll('#sugeridas button').forEach(b=>{
+  b.addEventListener('click',()=>{document.getElementById('chatInput').value=b.textContent;enviarIA();});
+});
+document.getElementById('chatInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();enviarIA();}
+});
+
+function agregarMsg(rol,texto,extra=''){
+  const cont=document.getElementById('chatMensajes');
+  const div=document.createElement('div');
+  div.className='msg '+(rol==='user'?'msg-user':'msg-ia')+(extra?' '+extra:'');
+  const bur=document.createElement('div');
+  bur.className='burbuja';bur.textContent=texto;
+  div.appendChild(bur);cont.appendChild(div);
+  cont.scrollTop=cont.scrollHeight;
+  return div;
+}
+
+async function enviarIA(){
+  if(iaOcupada)return;
+  const input=document.getElementById('chatInput');
+  const texto=input.value.trim();
+  if(!texto)return;
+  input.value='';
+  document.getElementById('sugeridas').style.display='none';
+  agregarMsg('user',texto);
+  historialIA.push({role:'user',content:texto});
+  iaOcupada=true;
+  document.getElementById('chatEnviar').disabled=true;
+  const espera=agregarMsg('ia','','escribiendo');
+  try{
+    const r=await fetch(IA_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({messages:historialIA.slice(-10)})
+    });
+    const data=await r.json();
+    espera.remove();
+    if(data.ok&&data.reply){
+      agregarMsg('ia',data.reply);
+      historialIA.push({role:'assistant',content:data.reply});
+    }else{
+      agregarMsg('ia','⚠️ '+(data.error||'No pude generar respuesta. Intente de nuevo.'),'error');
+    }
+  }catch(e){
+    espera.remove();
+    agregarMsg('ia','⚠️ El asistente no está disponible en este momento. Puede consultar las secciones del volumen o intentar más tarde.','error');
+  }finally{
+    iaOcupada=false;
+    document.getElementById('chatEnviar').disabled=false;
+    input.focus();
+  }
+}
+
 /* ===== PWA: manifest dinámico + service worker offline ===== */
 (function(){
   const manifest={
@@ -633,7 +763,7 @@ function copiarEnlace(btn){
     start_url:'.',display:'standalone',
     background_color:'#0d1b2e',theme_color:'#0d1b2e',
     description:'Tercerización e intermediación laboral ilegal en Colombia — guía ciudadana.',
-    icons:[{src:'https://haroldco45.github.io/biblioteca-legal/decreto-0581-2026/icon-512.png',sizes:'512x512',type:'image/png'}]
+    icons:[{src:'https://haroldco45.github.io/decreto-0581-2026/icon-512.png',sizes:'512x512',type:'image/png'}]
   };
   const blob=new Blob([JSON.stringify(manifest)],{type:'application/json'});
   const link=document.createElement('link');
